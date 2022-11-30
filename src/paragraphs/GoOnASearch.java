@@ -1,6 +1,6 @@
-package paragraphs.specificParagraphs;
+package paragraphs;
 
-import paragraphs.Paragraph;
+import paragraphs.abstracts.Paragraph;
 
 public class GoOnASearch extends Paragraph {
 
