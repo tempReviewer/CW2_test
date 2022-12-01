@@ -1,23 +1,23 @@
 package commands.gameMenuCommands;
 
 import commands.abstracts.Command;
-import game.SessionCommands;
+import game.runners.SessionRunner;
 
 public class ChooseVar1 implements Command {
-    private SessionCommands sessionCommands;
+    private SessionRunner sessionRunner;
 
 
-    public ChooseVar1(SessionCommands sessionCommands) {
-        this.sessionCommands = sessionCommands;
+    public ChooseVar1(SessionRunner sessionRunner) {
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        sessionCommands.chooseVar1();
+        sessionRunner.chooseVar1();
     }
 
     @Override
     public String getName() {
-        return sessionCommands.getVar1Name();
+        return sessionRunner.getVar1Name();
     }
 }

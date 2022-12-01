@@ -1,19 +1,18 @@
 package commands.mainMenuCommands;
 
-import game.GameCommands;
-import game.GameState;
+import game.runners.GameRunner;
 import commands.abstracts.Command;
 
 public class ExitGame implements Command {
-    GameCommands gameCommands;
+    GameRunner gameRunner;
 
-    public ExitGame(GameCommands gameCommands) {
-        this.gameCommands = gameCommands;
+    public ExitGame(GameRunner gameRunner) {
+        this.gameRunner = gameRunner;
     }
 
     @Override
     public void execute() {
-        gameCommands.exitGame();
+        gameRunner.exitGame();
     }
 
     @Override

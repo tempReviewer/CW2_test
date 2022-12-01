@@ -1,26 +1,26 @@
 package commands.mainMenuCommands;
-import game.GameCommands;
 import commands.abstracts.Command;
-import game.SessionCommands;
-import menu.Menu;
+import game.runners.GameRunner;
+import game.runners.SessionRunner;
+import menu.GameMenu;
+import menu.SessionMenu;
 
 
 public class StartNewSession implements Command {
-    private GameCommands gameCommands;
-    private SessionCommands sessionCommands;
-    private Menu menu;
+    private SessionRunner sessionRunner;
+    private GameRunner gameRunner;
+    private SessionMenu sessionMenu;
 
-
-    public StartNewSession(GameCommands gameState, SessionCommands sessionCommands, Menu menu) {
-        this.gameCommands = gameState;
-        this.menu=menu;
-        this.sessionCommands=sessionCommands;
+    public StartNewSession(GameRunner gameRunner,SessionRunner sessionRunner, SessionMenu sessionMenu) {
+        this.gameRunner=gameRunner;
+        this.sessionMenu = sessionMenu;
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        gameCommands.startNewSession();
-        menu.startSessionMenu(sessionCommands);
+        sessionRunner.startNewSession();
+        sessionMenu.startMenu(gameRunner,sessionRunner);
     }
 
     @Override

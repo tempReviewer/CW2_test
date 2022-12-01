@@ -1,19 +1,18 @@
 package commands.gameMenuCommands;
 
-import game.GameCommands;
 import commands.abstracts.Command;
-import game.SessionCommands;
+import game.runners.SessionRunner;
 
 public class ExitSession implements Command {
-    SessionCommands sessionCommands;
+    SessionRunner sessionRunner;
 
-    public ExitSession(SessionCommands sessionCommands) {
-        this.sessionCommands = sessionCommands;
+    public ExitSession(SessionRunner sessionRunner) {
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        sessionCommands.exitSession();
+        sessionRunner.exitSession();
     }
 
     @Override

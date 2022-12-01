@@ -1,31 +1,32 @@
 package commands.mainMenuCommands;
 
-import game.GameCommands;
+import game.runners.GameRunner;
 import commands.abstracts.Command;
-import game.SessionCommands;
-import menu.Menu;
+import game.storage.SaveStorage;
+import game.runners.SessionRunner;
+import menu.GameMenu;
 
 public class LoadSession implements Command {
-    private GameCommands gameCommands;
-    private Menu menu;
-    private SessionCommands sessionCommands;
+    private GameRunner gameRunner;
+    private GameMenu gameMenu;
+    private SessionRunner sessionRunner;
 
-    public LoadSession(GameCommands gameCommands, SessionCommands sessionCommands, Menu menu) {
-        this.gameCommands = gameCommands;
-        this.menu=menu;
-        this.sessionCommands=sessionCommands;
+    public LoadSession(GameRunner gameRunner,SessionRunner sessionRunner, GameMenu gameMenu) {
+        this.gameRunner = gameRunner;
+        this.gameMenu = gameMenu;
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        gameCommands.loadSession();
-        menu.startGameMenu(gameCommands,sessionCommands);
+        //не знаю, стоит ли создавать поле SaveStorage и передавать его в конструкторе,
+        // так что пока сделал так
+        new SaveStorage().loadSession(sessionRunner.getSessionState());
+        gameMenu.startMenu(gameRunner, sessionRunner);
     }
 
     @Override
     public String getName() {
         return "Загрузить игру";
     }
-
-
 }

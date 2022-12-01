@@ -1,18 +1,21 @@
 package commands.mainMenuCommands;
 
-import game.GameCommands;
 import commands.abstracts.Command;
+import game.storage.SaveStorage;
+import game.runners.SessionRunner;
 
 public class SaveSession implements Command {
-    GameCommands gameCommands;
+    private SessionRunner sessionRunner;
 
-    public SaveSession(GameCommands gameCommands) {
-        this.gameCommands = gameCommands;
+    public SaveSession(SessionRunner sessionRunner) {
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        gameCommands.saveSession();
+        //не знаю, стоит ли создавать поле SaveStorage и передавать его в конструкторе,
+        // так что пока сделал так
+        new SaveStorage().saveSession(sessionRunner.getSessionState());
     }
 
     @Override

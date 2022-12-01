@@ -1,4 +1,4 @@
-package game.binH;
+package game.storage.binH;
 
 import java.io.*;
 

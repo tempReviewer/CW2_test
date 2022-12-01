@@ -1,25 +1,26 @@
 package commands.mainMenuCommands;
 
-import game.GameCommands;
 import commands.abstracts.Command;
-import game.SessionCommands;
-import menu.Menu;
+import game.runners.GameRunner;
+import game.runners.SessionRunner;
+import menu.GameMenu;
+import menu.SessionMenu;
 
 public class ContinueSession implements Command {
-    private GameCommands gameCommands;
-    private SessionCommands sessionCommands;
-    private Menu menu;
+    private SessionRunner sessionRunner;
+    private GameRunner gameRunner;
+    private SessionMenu sessionMenu;
 
-    public ContinueSession(GameCommands gameCommands,SessionCommands sessionCommands,Menu menu) {
-        this.gameCommands = gameCommands;
-        this.menu=menu;
-        this.sessionCommands=sessionCommands;
+    public ContinueSession(GameRunner gameRunner,SessionRunner sessionRunner, SessionMenu sessionMenu) {
+        this.gameRunner=gameRunner;
+        this.sessionMenu = sessionMenu;
+        this.sessionRunner = sessionRunner;
     }
 
     @Override
     public void execute() {
-        gameCommands.continueSession();
-        menu.startSessionMenu(sessionCommands);
+        sessionRunner.continueSession();
+        sessionMenu.startMenu(gameRunner,sessionRunner);
     }
 
     @Override
